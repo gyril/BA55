@@ -1,0 +1,226 @@
+@font-face {
+	font-family: Adec;
+	src: url("./Adec20.otf") format("opentype");
+}
+
+@font-face {
+	font-family: Archive;
+	src: url("./Archive.otf") format("opentype");
+}
+
+@font-face {
+	font-family: Helvetica;
+	src: url("./Tate-Regular.otf") format("opentype");
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* BASS */
+
+strong {
+	font-weight: bold;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	overflow-y: scroll;
+}
+
+ #corps {
+ 	min-height: 100%;
+}
+
+body {
+	background-image: url('./bg.jpg');
+	background-size: 100%;
+	background-attachment: fixed;
+}
+
+h1 {
+	position: relative;
+	font: 64pt Adec;
+	color: #B00;
+}
+
+h1 > span {
+	position: absolute;
+	bottom: 1em;
+	margin-left: 10px;
+	font: 0.25em Tate;
+}
+
+#corps {
+	padding: 0 100px;
+	background-color: rgba(255, 255, 255, 0.8);
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 50px;
+	box-shadow: 0 0 10px 0 black;
+	font-family: Arial, sans-serif;
+}
+
+#top {
+	position: relative;
+	overflow: hidden;
+	text-align: center;
+}
+
+/* Uber menu */
+
+.menu {
+	margin: 0 0;
+	height: 35px;
+	border: 1px solid #600;
+	border-radius: 2px;
+	line-height: 35px;
+}
+
+.menu > a {
+	background-image: -webkit-linear-gradient(bottom, #600 0%, #B00 73%);
+	background-image: -moz-linear-gradient(bottom, #600 0%, #B00 73%);
+	color: #DDDDDD;
+	text-shadow: 0 -1px #333;
+	cursor: pointer;
+	display: inline-block;
+	float: left;
+	padding: 0 10px;
+	min-width: 50px;
+	text-align: center;
+	-webkit-transition: 80ms ease-in-out;
+	-moz-transition: 80ms ease-in-out;
+	text-decoration: none;
+}
+
+.menu > a.button-action {
+	background-image: -webkit-linear-gradient(bottom, #060 0%, #0A0 73%);
+	background-image: -moz-linear-gradient(bottom, #060 0%, #0A0 73%);
+}
+
+.menu > a:hover {
+	color: #FAFAFA;
+	text-shadow: 0 -1px #222;
+}
+
+.menu > a:active {
+	background-image: -webkit-linear-gradient(bottom, #600 0%, #900 90%);
+	background-image: -moz-linear-gradient(bottom, #600 0%, #900 90%);
+	box-shadow: 0 1px 3px 0px black inset;
+}
+
+.menu > a.button-action:active {
+	background-image: -webkit-linear-gradient(bottom, #060 0%, #090 90%);
+	background-image: -moz-linear-gradient(bottom, #060 0%, #090 90%);
+}
+
+.menu > a.active {
+	background-image: -webkit-linear-gradient(bottom, #300 0%, #900 90%);
+	background-image: -moz-linear-gradient(bottom, #300 0%, #900 90%);
+    box-shadow: 0 1px 5px 1px black inset;
+    text-shadow: 0 -1px black;
+    /* color: #FC3; #0C9*/
+}
+
+.menu > a.button-action.active {
+	background-image: -webkit-linear-gradient(bottom, #030 0%, #090 90%);
+	background-image: -moz-linear-gradient(bottom, #030 0%, #090 90%);
+}
+
+#frame {
+	margin: 20px auto;
+	text-align: center;
+}
+
+#frame > div {
+	display: none;
+}
+
+#frame p {
+	text-align: left;
+}
+
+#gagnants, #perdants {
+	line-height: 50px;
+}
+
+#gagnants > input, #perdants > input {
+	line-height: 30px;
+	font-size: 14pt;
+}
+
+input[type=submit] {
+	cursor: pointer;
+    background-color: #D00;
+    border: 1px solid #800;
+    color: #FFF;
+    border-radius: 2px;
+    line-height: 30px;
+    min-width: 100px;
+    margin-top: 15px;
+    font-size: 13pt;
+}
+
+.tableau {
+	text-align: left;
+	margin: 0 auto;
+}
+
+.tableau td {
+	min-width: 120px;
+	padding: 2px 0;
+}
+
+.title {
+	font-weight:bold;
+	text-align:center;
+}
