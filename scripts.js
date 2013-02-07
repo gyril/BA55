@@ -126,7 +126,7 @@ function loadEvolution() {
 					joueurs[i] = [scores[i]];
 				else joueurs[i].push(scores[i]);
 			}
-						
+			
 			for(var i in joueurs)
 				liste.push({nom: i, scores: joueurs[i], bass: scores[i].mu - 2*scores[i].sigma});
 			
@@ -136,53 +136,58 @@ function loadEvolution() {
 	
 			liste.sort(rank);
 			console.log(liste);
+			var maxBASS = liste[0].bass,
+				minBASS = liste[liste.length-1].bass;
 			
 			var width = 400,
-				height = (liste.length * 25) + 100;
+				height = (maxBASS - minBASS) * 20 + 50;
 				
 			var container = d3.select("#frame-classement").append("svg:svg")
 							.attr("width", width)
 							.attr("height", height);
 			
-			var joueurContainer = container.selectAll("g")
+			container.append("svg:line")
+				.attr("x1", width/2)
+				.attr("y1", 25)
+				.attr("x2", width/2)
+				.attr("y2", height - 25)
+				.attr("stroke-width", 2)
+				.attr("stroke", "black");
+				
+			
+			var positionContainer = container.selectAll("g")
 					.data(liste)
-					.enter().append("svg:g")
-					.attr("transform",function(d,i) {return "translate(100,"+(i * 25 + 50) +")";})
-					.attr("class","joueur");
-			  
-			  // Append rank
-
-				joueurContainer.append("svg:text")
-					.text(function(d, i) {return i + 1;})
-					.attr("x",10);
-					
-				// Append name
-			  
-				joueurContainer.append("svg:text")
-					.text(function(d) {return d.nom;})
-					.attr("x",50);
-					
-				// Append last BASS
-			  
-				joueurContainer.append("svg:text")
-					.text(function(d) {return Math.ceil(d.bass);})
-					.attr("x",150);
-					
-				var containerTitle = container.append("svg:g")
-						.attr("transform","translate(100,25)")
-						.attr("class","title");
+						.enter().append("svg:g")
+						.on("mouseover", mover)
+						.on("mouseout", mout);
+			
+			positionContainer.append("svg:line")
+						.attr("x1", width/2 - 5)
+						.attr("y1", function(d, i) { return (maxBASS-d.bass) * 20 + 25;})
+						.attr("x2", width/2 + 5)
+						.attr("y2", function(d, i) { return (maxBASS-d.bass) * 20 + 25;})
+						.attr("stroke-width", 2)
+						.attr("stroke", "black");
 						
-				containerTitle.append("svg:text")
-						.text("rank")
-						.attr("x",10);
+			positionContainer.append("svg:text")
+						.attr("x", function(d, i) { return width/2 + Math.pow(-1, i) * 10})
+						.attr("y", function(d, i) { return (maxBASS-d.bass) * 20 + 25;})
+						.text(function(d, i) { return d.nom + " ("+Math.ceil(d.bass)+")";})
+						.style("dominant-baseline", "central")
+						.style("text-anchor", function(d, i) { return Math.pow(-1, i) > 0 ? "start" : "end";})
+						.style("font-size", "12px");
 						
-				containerTitle.append("svg:text")
-						.text("name")
-						.attr("x",50);
-						
-				containerTitle.append("svg:text")
-						.text("BASS")
-						.attr("x",150);
+			function mover() {
+				positionContainer.selectAll("text").style("fill", "lightgray");
+				positionContainer.selectAll("line").attr("stroke", "lightgray");
+				d3.select(this).select("text").style("fill", "black");
+				d3.select(this).select("line").attr("stroke", "black");
+			}
+			
+			function mout() {
+				positionContainer.selectAll("text").style("fill", "black");
+				positionContainer.selectAll("line").attr("stroke", "black");
+			}
 
 		});
 	});

@@ -145,9 +145,9 @@ function updateSkill (res, callback) {
 			console.log(joueurs);
 			
 			// écrasement des JSON avec les valeurs actualisées
-			fs.writeFile('matchs.json', JSON.stringify(matchs));
-			fs.writeFile('joueurs.json', JSON.stringify(joueurs));
-			fs.writeFile('historique.json', JSON.stringify(historique));
+			fs.writeFile('matchs.json', JSON.stringify(matchs, null, 4));
+			fs.writeFile('joueurs.json', JSON.stringify(joueurs, null, 4));
+			fs.writeFile('historique.json', JSON.stringify(historique, null, 4));
 			
 			callback();
 			
@@ -175,7 +175,7 @@ getMap['/submit.html'] = function (req, res) {
 			console.log(joueurs);
 			
 			//historisation du fichier joueurs.json avant toute modif
-			fs.writeFile('joueurs/joueurs.'+matchs.length+'.json', JSON.stringify(joueurs));
+			fs.writeFile('joueurs/joueurs.'+matchs.length+'.json', JSON.stringify(joueurs, null, 4));
 			
 			var rep = '<?xml version="1.0" encoding="ISO-8859-1"?>'
 						+'<reponse>OK</reponse>';
