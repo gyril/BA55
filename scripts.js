@@ -172,7 +172,7 @@ function loadEvolution() {
 			positionContainer.append("svg:text")
 						.attr("x", function(d, i) { return width/2 + Math.pow(-1, i) * 10})
 						.attr("y", function(d, i) { return (maxBASS-d.bass) * 20 + 25;})
-						.text(function(d, i) { return d.nom + " ("+Math.ceil(d.bass)+")";})
+						.text(function(d, i) { return "#"+(i+1)+" : "+d.nom + " ("+Math.ceil(d.bass)+")";})
 						.style("dominant-baseline", "central")
 						.style("text-anchor", function(d, i) { return Math.pow(-1, i) > 0 ? "start" : "end";})
 						.style("font-size", "12px");
