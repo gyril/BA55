@@ -223,23 +223,17 @@ getMap['/scripts.js'] = staticHandler("scripts.js");
 getMap['/d3.js'] = staticHandler("d3.js");
 
 getMap['/matchs.json'] = function(req, res) {
-	
-	req.on('end', function () {
-		res.writeHead(200, { "Content-Type": "text/json"
-			  , "Content-Length": JSON.stringify(matchs).length
-			  });
-		res.end(JSON.stringify(matchs));
-	});
+	res.writeHead(200, { "Content-Type": "text/json"
+		  , "Content-Length": JSON.stringify(matchs).length
+		  });
+	res.end(JSON.stringify(matchs));	
 };
 
 getMap['/historique.json'] = function(req, res) {
-	
-	req.on('end', function () {
-		res.writeHead(200, { "Content-Type": "text/json"
-			  , "Content-Length": JSON.stringify(historique).length
-			  });
-		res.end(JSON.stringify(historique));
-	});
+	res.writeHead(200, { "Content-Type": "text/json"
+		  , "Content-Length": JSON.stringify(historique).length
+		  });
+	res.end(JSON.stringify(historique));
 };
 
 getMap['/joueurs.json'] = function(req, res) {
@@ -253,13 +247,11 @@ getMap['/joueurs.json'] = function(req, res) {
 	} else {
 		body = JSON.stringify(joueurs)
 	}
-	
-	req.on('end', function () {
-		res.writeHead(200, { "Content-Type": "text/json"
-			  , "Content-Length": body.length
-			  });
-		res.end(body);
-	});
+
+	res.writeHead(200, { "Content-Type": "text/json"
+		  , "Content-Length": body.length
+		  });
+	res.end(body);
 };
 
 function loadJSON(file) {
